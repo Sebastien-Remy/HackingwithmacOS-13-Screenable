@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		961362CF2912624400290705 /* ScreenableDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961362CE2912624400290705 /* ScreenableDocument.swift */; };
+		962F26F42912CD80005D6AC4 /* RenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962F26F32912CD80005D6AC4 /* RenderView.swift */; };
 		965D4EC329124B91008C8065 /* ScreenableApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965D4EC229124B91008C8065 /* ScreenableApp.swift */; };
 		965D4EC529124B91008C8065 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965D4EC429124B91008C8065 /* ContentView.swift */; };
 		965D4EC729124B93008C8065 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 965D4EC629124B93008C8065 /* Assets.xcassets */; };
@@ -19,6 +20,7 @@
 /* Begin PBXFileReference section */
 		961362CE2912624400290705 /* ScreenableDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenableDocument.swift; sourceTree = "<group>"; };
 		961362D02912667200290705 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		962F26F32912CD80005D6AC4 /* RenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderView.swift; sourceTree = "<group>"; };
 		965D4EBF29124B91008C8065 /* Screenable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Screenable.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		965D4EC229124B91008C8065 /* ScreenableApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenableApp.swift; sourceTree = "<group>"; };
 		965D4EC429124B91008C8065 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				965D4EC229124B91008C8065 /* ScreenableApp.swift */,
 				965D4EC429124B91008C8065 /* ContentView.swift */,
 				961362CE2912624400290705 /* ScreenableDocument.swift */,
+				962F26F32912CD80005D6AC4 /* RenderView.swift */,
 				965D4EC629124B93008C8065 /* Assets.xcassets */,
 				965D4ECB29124B93008C8065 /* Screenable.entitlements */,
 				965D4ED129124BF6008C8065 /* Backgrounds.txt */,
@@ -154,6 +157,7 @@
 			files = (
 				961362CF2912624400290705 /* ScreenableDocument.swift in Sources */,
 				965D4EC529124B91008C8065 /* ContentView.swift in Sources */,
+				962F26F42912CD80005D6AC4 /* RenderView.swift in Sources */,
 				965D4EC329124B91008C8065 /* ScreenableApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -294,6 +298,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = fr.monkeydev.Screenable;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -322,6 +327,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = fr.monkeydev.Screenable;
 				PRODUCT_NAME = "$(TARGET_NAME)";

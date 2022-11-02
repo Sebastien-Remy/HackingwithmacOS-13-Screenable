@@ -13,5 +13,6 @@ struct ScreenableApp: App {
         DocumentGroup(newDocument: ScreenableDocument()) { file in
             ContentView(document: file.$document)
         }
+//        .windowResizability(.contentSize) // Only for macOs 13+
     }
 }
