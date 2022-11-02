@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     
     @Binding var document: ScreenableDocument
+    let fonts = Bundle.main.loadStringArray(from: "Fonts.txt")
     
     var body: some View {
         HStack(spacing: 20) {
@@ -22,7 +23,16 @@ struct ContentView: View {
                         .font(.title)
                         .border(.tertiary, width: 1)
                 }
+                Picker("Select caption font", selection: $document.font) {
+                    ForEach(fonts, id:\.self, content: Text.init)
+                }
+                Picker("Size of caption font", selection: $document.fontSize) {
+                    ForEach(Array(stride(from: 12, through: 72, by: 4)), id:\.self) { size in
+                        Text("\(size)pt")
+                    }
+                }
             }
+            .labelsHidden() // Remove picker label but works fin with accessibility !
             .frame(width: 250)
         }
         .padding()

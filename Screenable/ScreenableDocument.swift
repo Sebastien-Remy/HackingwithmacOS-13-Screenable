@@ -11,6 +11,8 @@ import UniformTypeIdentifiers
 struct ScreenableDocument: FileDocument, Codable {
     static var readableContentTypes = [UTType(exportedAs:"fr.monkeydev.screenable")]
     var caption = ""
+    var font = "Helvetica Neue"
+    var fontSize = 16
     
     init() {
         

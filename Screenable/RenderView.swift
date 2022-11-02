@@ -48,6 +48,7 @@ struct RenderView: View {
         } symbols: {
             // add custom SwiftUI views
             Text(document.caption)
+                .font(.custom(document.font, size: Double(document.fontSize)))
                 .foregroundColor(.black)
                 .multilineTextAlignment(.center)
                 .tag("Text") // use tag to find this view in the rendering closure
