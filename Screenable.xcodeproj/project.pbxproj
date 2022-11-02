@@ -11,6 +11,8 @@
 		965D4EC529124B91008C8065 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965D4EC429124B91008C8065 /* ContentView.swift */; };
 		965D4EC729124B93008C8065 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 965D4EC629124B93008C8065 /* Assets.xcassets */; };
 		965D4ECA29124B93008C8065 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 965D4EC929124B93008C8065 /* Preview Assets.xcassets */; };
+		965D4ED329124BF6008C8065 /* Backgrounds.txt in Resources */ = {isa = PBXBuildFile; fileRef = 965D4ED129124BF6008C8065 /* Backgrounds.txt */; };
+		965D4ED429124BF6008C8065 /* Fonts.txt in Resources */ = {isa = PBXBuildFile; fileRef = 965D4ED229124BF6008C8065 /* Fonts.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +22,8 @@
 		965D4EC629124B93008C8065 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		965D4EC929124B93008C8065 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		965D4ECB29124B93008C8065 /* Screenable.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Screenable.entitlements; sourceTree = "<group>"; };
+		965D4ED129124BF6008C8065 /* Backgrounds.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Backgrounds.txt; sourceTree = "<group>"; };
+		965D4ED229124BF6008C8065 /* Fonts.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Fonts.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,8 @@
 				965D4EC429124B91008C8065 /* ContentView.swift */,
 				965D4EC629124B93008C8065 /* Assets.xcassets */,
 				965D4ECB29124B93008C8065 /* Screenable.entitlements */,
+				965D4ED129124BF6008C8065 /* Backgrounds.txt */,
+				965D4ED229124BF6008C8065 /* Fonts.txt */,
 				965D4EC829124B93008C8065 /* Preview Content */,
 			);
 			path = Screenable;
@@ -127,6 +133,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				965D4ED329124BF6008C8065 /* Backgrounds.txt in Resources */,
+				965D4ED429124BF6008C8065 /* Fonts.txt in Resources */,
 				965D4ECA29124B93008C8065 /* Preview Assets.xcassets in Resources */,
 				965D4EC729124B93008C8065 /* Assets.xcassets in Resources */,
 			);
