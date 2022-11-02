@@ -8,19 +8,17 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @Binding var document: ScreenableDocument
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
-        }
+        TextEditor(text: $document.caption)
         .padding()
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(document: .constant(ScreenableDocument()))
     }
 }
