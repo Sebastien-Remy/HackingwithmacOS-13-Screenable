@@ -20,11 +20,15 @@ struct RenderView: View {
             
             // draw background image
             context.fill(fullSizePath, with: .color(.white))
+            if document.backgroundImage.isEmpty == false {
+                context.draw(Image(document.backgroundImage), in: fullSizeRect)
+            }
             
             // add gradient
             
             // draw caption
             var verticalOffset = 0.0 // How much we need to down phone image and screenshot based on what the user wrote for their caption
+            let horizontalOffSet = (size.width - phoneSize.width) / 2
             if document.caption.isEmpty {
                 verticalOffset = (size.height - phoneSize.height) / 2
             } else {
@@ -44,14 +48,40 @@ struct RenderView: View {
                 }
             }
             
+            // draw user image
+            if let screenshot = context.resolveSymbol(id: "Image") {
+                let drawPosition = CGPoint(x: horizontalOffSet + imageInsets.width,
+                                           y: verticalOffset + imageInsets.height)
+                let drawSize = CGSize(width: phoneSize.width - imageInsets.width * 2,
+                                      height: phoneSize.height - imageInsets.height * 2)
+                context.draw(screenshot, in: CGRect(origin: drawPosition,
+                                                    size: drawSize))
+            }
+            
             // draw phone
+            context.draw(Image("iPhone"), in: CGRect(origin:
+                                                    CGPoint(x: horizontalOffSet,
+                                                            y: verticalOffset),
+                                                   size: phoneSize))
+            
         } symbols: {
             // add custom SwiftUI views
+            
+            // caption
             Text(document.caption)
                 .font(.custom(document.font, size: Double(document.fontSize)))
                 .foregroundColor(.black)
                 .multilineTextAlignment(.center)
                 .tag("Text") // use tag to find this view in the rendering closure
+            
+            // user image
+            if let userImage = document.userImage, let nsImage = NSImage(data: userImage) {
+                Image(nsImage: nsImage)
+                    .tag("Image")
+            } else {
+                Color.gray
+                    .tag("Image")
+            }
         }
         .frame(width: 414, height: 736)
     }
