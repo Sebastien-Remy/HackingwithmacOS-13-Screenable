@@ -15,6 +15,9 @@ struct ScreenableDocument: FileDocument, Codable {
     var fontSize = 16
     var backgroundImage = ""
     var userImage: Data?
+    var captionColor = Color.black
+    var backgroundColorTop = Color.clear
+    var backgroundColorBottom = Color.clear
     
     init() {
         

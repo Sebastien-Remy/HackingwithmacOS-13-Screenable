@@ -46,8 +46,12 @@ struct ContentView: View {
                             Text("\(size)pt")
                         }
                     }
+                    
+                    ColorPicker("Caption color:", selection: $document.captionColor)
+                    
                 }
                 .labelsHidden() // Remove picker label but works fin with accessibility !
+               
                 VStack(alignment: .leading) {
                     Text("Background image")
                         .bold()
@@ -59,6 +63,18 @@ struct ContentView: View {
                     }
                 }
                 .labelsHidden()
+                VStack(alignment: .leading) {
+                    Text("Background color")
+                        .bold()
+                    
+                    Text("If set to non transparent, this will be drawn over backgroundcolor image.")
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    
+                    HStack(spacing: 20) {
+                        ColorPicker("Start:", selection: $document.backgroundColorTop)
+                        ColorPicker("End:", selection: $document.backgroundColorBottom)
+                    }
+                }
             }
             .frame(width: 250)
         }

@@ -25,6 +25,11 @@ struct RenderView: View {
             }
             
             // add gradient
+            context.fill(fullSizePath, with: .linearGradient(
+                Gradient(
+                colors: [document.backgroundColorTop, document.backgroundColorBottom]),
+                startPoint: .zero,
+                endPoint: CGPoint(x: 0, y: size.height)))
             
             // draw caption
             var verticalOffset = 0.0 // How much we need to down phone image and screenshot based on what the user wrote for their caption
@@ -70,7 +75,7 @@ struct RenderView: View {
             // caption
             Text(document.caption)
                 .font(.custom(document.font, size: Double(document.fontSize)))
-                .foregroundColor(.black)
+                .foregroundColor(document.captionColor)
                 .multilineTextAlignment(.center)
                 .tag("Text") // use tag to find this view in the rendering closure
             
