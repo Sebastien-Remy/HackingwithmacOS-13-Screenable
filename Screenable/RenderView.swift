@@ -53,6 +53,19 @@ struct RenderView: View {
                 }
             }
             
+            // draw phone with shadow
+            if document.dropShadowLocation > 1 {
+                var contextCopy = context
+                
+                contextCopy.addFilter(.shadow(color: .black, radius: Double(document.dropShadowStrength)))
+                contextCopy.addFilter(.shadow(color: .black, radius: Double(document.dropShadowStrength)))
+                contextCopy.draw(Image("iPhone"), in: CGRect(origin:
+                                                                CGPoint(x: horizontalOffSet,
+                                                                        y: verticalOffset),
+                                                             size: phoneSize))
+            }
+            
+            
             // draw user image
             if let screenshot = context.resolveSymbol(id: "Image") {
                 let drawPosition = CGPoint(x: horizontalOffSet + imageInsets.width,
@@ -76,6 +89,10 @@ struct RenderView: View {
             Text(document.caption)
                 .font(.custom(document.font, size: Double(document.fontSize)))
                 .foregroundColor(document.captionColor)
+                .shadow(color: document.dropShadowLocation == 1 || document.dropShadowLocation == 3 ? .black : .clear,
+                        radius: Double(document.dropShadowStrength))
+                .shadow(color: document.dropShadowLocation == 1 || document.dropShadowLocation == 3 ? .black : .clear,
+                        radius: Double(document.dropShadowStrength))
                 .multilineTextAlignment(.center)
                 .tag("Text") // use tag to find this view in the rendering closure
             

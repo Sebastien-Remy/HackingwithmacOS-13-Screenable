@@ -18,6 +18,8 @@ struct ScreenableDocument: FileDocument, Codable {
     var captionColor = Color.black
     var backgroundColorTop = Color.clear
     var backgroundColorBottom = Color.clear
+    var dropShadowLocation = 0
+    var dropShadowStrength = 1
     
     init() {
         
