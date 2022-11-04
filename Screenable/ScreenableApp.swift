@@ -21,6 +21,24 @@ struct ScreenableApp: App {
                                      from: nil
                     )
                 }
+            }
+            // alternatives
+            CommandMenu("Export") {
+                Menu("Options") {
+                    Button("Ignore background") {
+                        //
+                    }
+                    
+                    Button("Also render thumbnail") {
+                        //
+                    }
+                }
+                Button("Export as PNG") {
+                    NSApp.sendAction(#selector(AppCommands.export),
+                                     to: nil,
+                                     from: nil
+                    )
+                }
                 .keyboardShortcut("e")
             }
         }

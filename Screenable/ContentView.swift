@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UniformTypeIdentifiers
 
 @MainActor struct ContentView: View {
     
@@ -21,6 +22,15 @@ import SwiftUI
                 .dropDestination(for: URL.self) {items, location in
                     handleDrop(of: items)
                 }
+            // on macOS 13 .draggable is still buged !
+                .onDrag {
+                    NSItemProvider(item: snapshotToURL()as NSSecureCoding,
+                                   typeIdentifier: UTType.fileURL.identifier)
+                }
+                .toolbar(content: {
+                    Button("Export") { export() }
+                    ShareLink(item: snapshotToURL())
+                })
             VStack(spacing: 20) {
                 VStack(alignment: .leading) {
                     Text("Caption: ")
@@ -124,6 +134,12 @@ import SwiftUI
             }
             
         }
+    }
+    
+    func snapshotToURL() -> URL {
+        let url = URL.temporaryDirectory.appending(path: "ScreenableExport").appendingPathExtension("png")
+        try? createSnapshot()?.write(to: url)
+        return url
     }
 }
 
