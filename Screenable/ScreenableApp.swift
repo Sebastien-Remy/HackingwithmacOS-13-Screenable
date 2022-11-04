@@ -9,10 +9,17 @@ import SwiftUI
 
 @main
 struct ScreenableApp: App {
-    var body: some Scene {DocumentGroup(newDocument: ScreenableDocument()) { file in
+    var body: some Scene {
+        if #available(macOS 13, *) {
+            return DocumentGroup(newDocument: ScreenableDocument()) { file in
                 ContentView(document: file.$document)
             }
-        //.windowResizability(.contentSize) only for macOS 13
+            // CRASH .windowResizability(.contentSize) //only for macOS 13
+        } else {
+            return DocumentGroup(newDocument: ScreenableDocument()) { file in
+                ContentView(document: file.$document)
+            }
+        }
     }
 }
 
