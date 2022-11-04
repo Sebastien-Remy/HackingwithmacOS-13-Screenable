@@ -17,6 +17,7 @@
 		965D4ED329124BF6008C8065 /* Backgrounds.txt in Resources */ = {isa = PBXBuildFile; fileRef = 965D4ED129124BF6008C8065 /* Backgrounds.txt */; };
 		965D4ED429124BF6008C8065 /* Fonts.txt in Resources */ = {isa = PBXBuildFile; fileRef = 965D4ED229124BF6008C8065 /* Fonts.txt */; };
 		96F3276D29143C7200C51737 /* Color-Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F3276C29143C7200C51737 /* Color-Codable.swift */; };
+		96F3276F29155B0A00C51737 /* AppCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F3276E29155B0A00C51737 /* AppCommands.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		965D4ED129124BF6008C8065 /* Backgrounds.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Backgrounds.txt; sourceTree = "<group>"; };
 		965D4ED229124BF6008C8065 /* Fonts.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Fonts.txt; sourceTree = "<group>"; };
 		96F3276C29143C7200C51737 /* Color-Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color-Codable.swift"; sourceTree = "<group>"; };
+		96F3276E29155B0A00C51737 /* AppCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCommands.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 				96F3276C29143C7200C51737 /* Color-Codable.swift */,
 				962F26F52912D9ED005D6AC4 /* Bundle-String-Array.swift */,
 				965D4EC429124B91008C8065 /* ContentView.swift */,
+				96F3276E29155B0A00C51737 /* AppCommands.swift */,
 				961362CE2912624400290705 /* ScreenableDocument.swift */,
 				962F26F32912CD80005D6AC4 /* RenderView.swift */,
 				965D4EC629124B93008C8065 /* Assets.xcassets */,
@@ -162,6 +165,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				961362CF2912624400290705 /* ScreenableDocument.swift in Sources */,
+				96F3276F29155B0A00C51737 /* AppCommands.swift in Sources */,
 				965D4EC529124B91008C8065 /* ContentView.swift in Sources */,
 				96F3276D29143C7200C51737 /* Color-Codable.swift in Sources */,
 				962F26F42912CD80005D6AC4 /* RenderView.swift in Sources */,
@@ -310,7 +314,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = fr.monkeydev.Screenable;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -341,7 +345,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = fr.monkeydev.Screenable;
 				PRODUCT_NAME = "$(TARGET_NAME)";

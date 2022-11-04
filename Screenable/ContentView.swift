@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+@MainActor struct ContentView: View {
     
     @Binding var document: ScreenableDocument
     
@@ -16,20 +16,11 @@ struct ContentView: View {
     
     var body: some View {
         HStack(spacing: 20) {
-            if #available(macOS 13.0, *) {
-                RenderView(document: document)
-                // masOS 13 and above
-                    .dropDestination(for: URL.self) {items, location in
-                        handleDrop(of: items)
-                    }
-            } else {
-                RenderView(document: document)
-                // Under macOS 13
-                // Source: https://swiftwithmajid.com/2020/04/01/drag-and-drop-in-swiftui/
-                    .onDrop(of: ["public.url"],
-                            delegate: UserImageDropDelegate(userImage: $document.userImage))
-                
-            }
+            RenderView(document: document)
+            // masOS 13 and above
+                .dropDestination(for: URL.self) {items, location in
+                    handleDrop(of: items)
+                }
             VStack(spacing: 20) {
                 VStack(alignment: .leading) {
                     Text("Caption: ")
@@ -51,7 +42,7 @@ struct ContentView: View {
                     
                 }
                 .labelsHidden() // Remove picker label but works fin with accessibility !
-               
+                
                 VStack(alignment: .leading) {
                     Text("Background image")
                         .bold()
@@ -95,6 +86,7 @@ struct ContentView: View {
             .frame(width: 250)
         }
         .padding()
+        .onCommand(#selector(AppCommands.export)) { export() }
     }
     
     func handleDrop(of urls: [URL]) -> Bool {
@@ -103,33 +95,63 @@ struct ContentView: View {
         document.userImage = loadedImage
         return true
     }
-}
-
-// Drop Before macOS 13
-// Source: https://swiftwithmajid.com/2020/04/01/drag-and-drop-in-swiftui/
-
-struct UserImageDropDelegate: DropDelegate {
-    @Binding var userImage: Data?
-    func performDrop(info: DropInfo) -> Bool {
-        guard info.hasItemsConforming(to: ["public.url"]) else {
-            return false
+    
+    func createSnapshot() -> Data? {
+        let renderer = ImageRenderer(content: RenderView(document: document))
+        if let tiff = renderer.nsImage?.tiffRepresentation {
+            let bitmap = NSBitmapImageRep(data: tiff)
+            return bitmap?.representation(using: .png,
+                                          properties: [:])
+        } else {
+            return nil
         }
+    }
+    
+    func export() {
+        guard let png = createSnapshot() else { return }
         
-        guard let item = info.itemProviders(for: ["public.url"]).first  else { return false }
+        let panel = NSSavePanel()
+        panel.allowedContentTypes = [.png]
         
-        _ = item.loadObject(ofClass: URL.self) { url, _ in
-            if let url = url {
-                DispatchQueue.main.async {
-                    
-                    let loadedImage = try? Data(contentsOf: url)
-                    
-                    userImage = loadedImage
+        panel.begin { result in
+            if result == .OK {
+                guard let url = panel.url else { return }
+                do {
+                    try png.write(to: url)
+                } catch {
+                    print (error.localizedDescription)
                 }
             }
+            
         }
-        return true
     }
 }
+
+//// Drop Before macOS 13
+//// Source: https://swiftwithmajid.com/2020/04/01/drag-and-drop-in-swiftui/
+//
+//struct UserImageDropDelegate: DropDelegate {
+//    @Binding var userImage: Data?
+//    func performDrop(info: DropInfo) -> Bool {
+//        guard info.hasItemsConforming(to: ["public.url"]) else {
+//            return false
+//        }
+//
+//        guard let item = info.itemProviders(for: ["public.url"]).first  else { return false }
+//
+//        _ = item.loadObject(ofClass: URL.self) { url, _ in
+//            if let url = url {
+//                DispatchQueue.main.async {
+//
+//                    let loadedImage = try? Data(contentsOf: url)
+//
+//                    userImage = loadedImage
+//                }
+//            }
+//        }
+//        return true
+//    }
+//}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
